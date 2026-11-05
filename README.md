@@ -12,27 +12,15 @@
 ### 2. Исходный код решения на Python (PEP-8)
 python
 
-def method_1_sort(a: int, b: int, c: int) -> int:
-    """Способ 1: сортировка списка из трёх элементов.
-
-    :param a: Первое число.
-    :param b: Второе число.
-    :param c: Третье число.
-    :return: Число, стоящее между двумя другими.
-    """
+def method_1_sort(a, b, c):
+    # Способ 1 - сортировка через nums
     nums = [a, b, c]
     nums.sort()
     return nums[1]
 
 
-def method_2_loop(a: int, b: int, c: int) -> int:
-    """Способ 2: цикл и проверка «лежит между двумя другими».
-
-    :param a: Первое число.
-    :param b: Второе число.
-    :param c: Третье число.
-    :return: Число, стоящее между двумя другими.
-    """
+def method_2_loop(a, b, c):
+    # Способ 2 - через цикл
     nums = [a, b, c]
     for i in range(3):
         x = nums[i]
@@ -40,17 +28,10 @@ def method_2_loop(a: int, b: int, c: int) -> int:
         z = nums[(i + 2) % 3]
         if (y <= x <= z) or (z <= x <= y):
             return x
-    return a  # недостижимо, добавлено для полноты
 
 
-def method_3_conditions(a: int, b: int, c: int) -> int:
-    """Способ 3: без цикла и без sort, только вложенные условия.
-
-    :param a: Первое число.
-    :param b: Второе число.
-    :param c: Третье число.
-    :return: Число, стоящее между двумя другими.
-    """
+def method_3_conditions(a, b, c):
+    # Способ 3 - через сравнение
     if (a <= b <= c) or (c <= b <= a):
         return b
     elif (b <= a <= c) or (c <= a <= b):
@@ -59,14 +40,14 @@ def method_3_conditions(a: int, b: int, c: int) -> int:
         return c
 
 
-def main() -> None:
-    """Считывает три числа и выводит среднее выбранным способом."""
+def main():
     a, b, c = map(int, input().split())
 
-    # Переключатель способа: 1 — sort, 2 — цикл, 3 — условия
-    way = 1
+    # ВЫБОР СПОСОБА
+    # выберите для way 1, 2 или 3
+way = 2
 
-    if way == 1:
+if way == 1:
         result = method_1_sort(a, b, c)
     elif way == 2:
         result = method_2_loop(a, b, c)
@@ -76,11 +57,12 @@ def main() -> None:
         print("Неверный номер способа")
         return
 
-    print(result)
+print(result)
 
 
 if __name__ == "__main__":
     main()
+
 
 ### 3. Пояснение: подробное описание хода решения
 
